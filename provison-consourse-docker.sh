@@ -55,6 +55,8 @@ if [ ! -f "${PIPELINE}" ];then
 	exit 1
 fi
 echo "Login and setup for consourse"
+sleep 5
 sudo ${FLY_CMD} -t tutorial login -c http://localhost:8080 -u test -p test # If you want to change the credentials, change in docker-compose file
-sudo ${FLY_CMD} -t tutorial sp -p hellow-world -c ${PIPELINE}
+echo "y" | sudo ${FLY_CMD} -t tutorial sp -p hellow-world -c ${PIPELINE}
+sudo ${FLY_CMD} -t tutorial unpause-pipeline -p hellow-world
 echo "You can access your consourse URL using http://${HOSTURL}:8080"
